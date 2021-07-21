@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:phone/utilities/hex_color.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final MaskedTextController _phoneNumberController = MaskedTextController(mask: "(000) 000-0000");
+  final TextEditingController _phoneNumberController = MaskedTextController(mask: "(000) 000-0000");
 
   void _clearTextField() {
     _phoneNumberController.clear();
@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                 ),
                 keyboardType: TextInputType.phone,
+                autocorrect: false,
                 inputFormatters: [
                   LengthLimitingTextInputFormatter(14),
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
